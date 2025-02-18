@@ -5,6 +5,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : BaseController
 {
+    private GameManager gameManager;
+
+    public void Init(GameManager gameManager)
+    {
+        this.gameManager = gameManager;
+    }
     void OnMove(InputValue inputValue)
     {
         movementDirection = inputValue.Get<Vector2>();
