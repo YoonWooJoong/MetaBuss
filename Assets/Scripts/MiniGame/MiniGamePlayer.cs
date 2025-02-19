@@ -14,6 +14,7 @@ public class MiniGamePlayer : MonoBehaviour
     public bool isDead = false;
     float deathCooldown = 0f;
 
+
     bool isFlap = false;
 
     public void Init(GameManager gameManager)

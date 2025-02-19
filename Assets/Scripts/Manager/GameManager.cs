@@ -14,10 +14,11 @@ public class GameManager : MonoBehaviour
     public MiniGamePlayer miniGamePlayer { get; private set; }
     private AreaManager areaManager;
     private UIManager uiManager;
+    private MiniGameResultUI miniGameResultUI;
 
     public int currentScore = 0;
     public int bestScore = 0;
-
+    public bool ChangeScene = false;
 
     public int currentScene = 0;
     public bool isFirstLoading = true;
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
 
     public void MiniGameStart()
     {
+        currentScore = 0;
         uiManager.SetPlayGame();
         Time.timeScale = 1;
         
@@ -74,6 +76,8 @@ public class GameManager : MonoBehaviour
         Transform chil = transform.GetChild(0);
         chil.gameObject.SetActive(true);
     }
+
+    
 
     public void AddScore(int score)
     {
@@ -135,12 +139,30 @@ public class GameManager : MonoBehaviour
     private void FindUI()
     {
         uiManager = FindObjectOfType<UIManager>();
+        miniGameResultUI = FindObjectOfType<MiniGameResultUI>(true);
+
         if (uiManager != null)
         {
             uiManager.Init(this);
             Debug.Log("UI매니저를 찾음!");
         }
+        else if (miniGameResultUI != null)
+        {
+            miniGameResultUI.Init(this);
+            Debug.Log("미니게임결과UI를 찾음");
+        }
         else
         { Debug.LogWarning("UI매니저가 없음!"); }
+    }
+
+    private void Update()
+    {
+        if (miniGameResultUI != null)
+        {
+            if (ChangeScene == true && currentScene == 0)
+            {
+                miniGameResultUI.gameObject.SetActive(true);
+            }
+        }
     }
 }

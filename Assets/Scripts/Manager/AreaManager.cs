@@ -44,6 +44,7 @@ public class AreaManager : MonoBehaviour
             {
                 SceneManager.LoadScene("MiniGame");
                 gameManager.currentScene = 1;
+                gameManager.ChangeScene = true;
                 Time.timeScale = 0;
                 this.gameObject.SetActive(false);
             }  
