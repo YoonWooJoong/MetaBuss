@@ -58,4 +58,9 @@ public class UIManager : MonoBehaviour
     {
         gameUI.SetUI(score);
     }
+
+    public void EndScore(int score, int bestScore)
+    {
+        gameOverUI.SetUI(score, bestScore);
+    }
 }

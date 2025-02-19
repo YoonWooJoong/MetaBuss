@@ -15,8 +15,8 @@ public class GameManager : MonoBehaviour
     private AreaManager areaManager;
     private UIManager uiManager;
 
-    [SerializeField]private int currentScore = 0;
-    [SerializeField]private int bestScore = 0;
+    public int currentScore = 0;
+    public int bestScore = 0;
 
 
     public int currentScene = 0;
@@ -60,7 +60,8 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         if(currentScore > bestScore)
             bestScore = currentScore;
-        currentScore = 0;
+
+        uiManager.EndScore(currentScore, bestScore);
     }
 
 

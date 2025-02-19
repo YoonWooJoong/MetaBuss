@@ -1,5 +1,7 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,7 +10,8 @@ public class GameOverUI : BaseUI
 {
     [SerializeField] private Button restartButton;
     [SerializeField] private Button exitButton;
-
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI bestScoreText;
     public override void Init(UIManager uiManager)
     {
         base.Init(uiManager);
@@ -20,6 +23,7 @@ public class GameOverUI : BaseUI
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         GameManager.instance.isFirstLoading = false;
+        GameManager.instance.currentScore = 0;
     }
 
     public void OnClickExitButton()
@@ -30,5 +34,11 @@ public class GameOverUI : BaseUI
     protected override UIState GetUIState()
     {
         return UIState.GameOver;
+    }
+
+    public void SetUI(int score, int bestScore)
+    {
+        scoreText.text = score.ToString();
+        bestScoreText.text = bestScore.ToString();
     }
 }

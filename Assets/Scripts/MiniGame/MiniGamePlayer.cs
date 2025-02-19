@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MiniGamePlayer : MonoBehaviour
 {
@@ -44,7 +45,9 @@ public class MiniGamePlayer : MonoBehaviour
         }
         else 
         {
-            if(Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
+            if (EventSystem.current.IsPointerOverGameObject()) // UI에 마우스가 올라가있을때 누르면 올라가지않게함
+                return;
+            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
                 isFlap = true;
         }
         
