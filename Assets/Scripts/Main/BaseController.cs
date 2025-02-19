@@ -25,7 +25,7 @@ public class BaseController : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        Movement(movementDirection); // 이동 값은 player컨트롤러에서 받아옴
+        Movement(movementDirection); // 이동 값은 player컨트롤러에서 받아옴d
     }
 
     private void Movement(Vector2 direction) // 이동로직 및 좌우 바라볼시 flip
@@ -37,15 +37,21 @@ public class BaseController : MonoBehaviour
 
         if (characterRenderer != null) // 예외처리
         {
-            if (_rigidbody.velocity.x > 0)
-                characterRenderer.flipX = false;
-            else if (_rigidbody.velocity.x < 0)
-                characterRenderer.flipX = true;
+           //if (_rigidbody.velocity.x > 0)
+           //    characterRenderer.flipX = false;
+           //else if (_rigidbody.velocity.x < 0)
+           //    characterRenderer.flipX = true;
         }
         else
         {
             Debug.LogError("BaseController의 characterRenderer가 null입니다.");
         }
+
+        if (_rigidbody.velocity.x > 0)
+            transform.GetChild(0).rotation = Quaternion.Euler(0, 0, 0);
+        else if (_rigidbody.velocity.x < 0)
+            transform.GetChild(0).rotation = Quaternion.Euler(0, 180, 0);
+
 
     }
 

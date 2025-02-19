@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     public int currentScene = 0;
     public bool isFirstLoading = true;
+    public bool isRiding = false;
 
     private void Awake()
     {
