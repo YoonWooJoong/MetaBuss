@@ -42,7 +42,10 @@ public class AreaManager : MonoBehaviour
         {
             if (area.Contains(gameManager.player.transform.position) == true)
             {
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene("MiniGame");
+                gameManager.currentScene = 1;
+                Time.timeScale = 0;
+                this.gameObject.SetActive(false);
             }  
         }
         
