@@ -3227,6 +3227,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a02ec4456bea9242ab0e967b3491ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerAnimator: {fileID: 138491562}
+  RideAnimator: {fileID: 0}
 --- !u!1 &1031104273
 GameObject:
   m_ObjectHideFlags: 0
@@ -5767,8 +5769,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentScore: 0
   bestScore: 0
+  ChangeScene: 0
   currentScene: 0
   isFirstLoading: 1
+  isRiding: 0
 --- !u!4 &1769907399
 Transform:
   m_ObjectHideFlags: 0

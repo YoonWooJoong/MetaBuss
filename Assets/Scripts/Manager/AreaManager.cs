@@ -38,16 +38,20 @@ public class AreaManager : MonoBehaviour
             Debug.LogError("eventAreas가 설정되지 않았습니다.");
             return;
         }
-        foreach (var area in eventAreas)
+        for (int i = 0; i < eventAreas.Count; i++)
         {
-            if (area.Contains(gameManager.player.transform.position) == true)
+            if (eventAreas[0].Contains(gameManager.player.transform.position) == true)
             {
                 SceneManager.LoadScene("MiniGame");
                 gameManager.currentScene = 1;
                 gameManager.ChangeScene = true;
                 Time.timeScale = 0;
                 this.gameObject.SetActive(false);
-            }  
+            }
+            if (eventAreas[1].Contains(gameManager.player.transform.position) == true)
+            {
+                gameManager.player.transform.position = new Vector3(-58.45f, 7.45f, 0);
+            }
         }
         
     }

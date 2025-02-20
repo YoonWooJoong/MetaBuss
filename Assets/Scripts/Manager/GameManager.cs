@@ -61,9 +61,11 @@ public class GameManager : MonoBehaviour
     {
         uiManager.SetGameOver();
         Time.timeScale = 1;
-        if(currentScore > bestScore)
+        if (currentScore > bestScore)
+        {
             bestScore = currentScore;
-
+            PlayerPrefs.SetInt("BestScore", bestScore);
+        }
         uiManager.EndScore(currentScore, bestScore);
     }
 
