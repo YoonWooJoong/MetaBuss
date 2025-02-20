@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
         currentScene = 0;
         Time.timeScale = 1;
-        Transform chil = transform.GetChild(0);
+        Transform chil = transform.GetChild(0); // AreaManager를 활성화 해줌
         chil.gameObject.SetActive(true);
     }
 

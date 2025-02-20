@@ -11,6 +11,8 @@ public class AreaManager : MonoBehaviour
 
     [SerializeField] private Color gizmoColor = new Color(1, 0, 0, 0.3f); // 기즈모 색상
     [SerializeField] private TextMeshProUGUI EscapeTimerText;
+    [SerializeField] private GameObject EscapeText;
+    [SerializeField] private MiroResultUI resultUI;
 
     private TextAnimation textAnimation;
 
@@ -18,6 +20,7 @@ public class AreaManager : MonoBehaviour
     public bool IsEscapeSuccess = false;
     public int EscaepSuccessCount = 0;
     public float EscapeTimer = 60f;
+    private float BestTime = 0f;
 
     GameManager gameManager;
 
@@ -63,7 +66,8 @@ public class AreaManager : MonoBehaviour
                 gameManager.player.transform.position = new Vector3(-58.45f, 7.45f, 0);
                 IsEnterMiro = true;
                 IsEscapeSuccess = false;
-                EscapeTimer = 10f;
+                EscapeTimer = 60f;
+                EscapeText.gameObject.SetActive(true);
             }
             if (eventAreas[2].Contains(gameManager.player.transform.position) == true)
             {
@@ -71,6 +75,15 @@ public class AreaManager : MonoBehaviour
                 EscaepSuccessCount++;
                 IsEscapeSuccess = true; // 결과 표출 후에 false로 변경
                 IsEnterMiro = false;
+                EscapeText.gameObject.SetActive(false);
+                resultUI.SuccessUIResult();
+                resultUI.TimeRemainText(EscapeTimer);
+                if (BestTime < EscapeTimer)
+                {
+                    BestTime = EscapeTimer;
+                    PlayerPrefs.SetFloat("BestTime", BestTime);
+                }
+                PlayerPrefs.SetInt("ClearCount", EscaepSuccessCount);
             }
         }
         
@@ -84,6 +97,8 @@ public class AreaManager : MonoBehaviour
             {
                 gameManager.player.transform.position = new Vector3(0, 0, 0);
                 IsEnterMiro = false;
+                EscapeText.gameObject.SetActive(false);
+                resultUI.FailUIResult();
             }
             if (EscapeTimer <= 0)
             {
