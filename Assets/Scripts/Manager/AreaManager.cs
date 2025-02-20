@@ -24,10 +24,6 @@ public class AreaManager : MonoBehaviour
 
     GameManager gameManager;
 
-    public void Init(GameManager gameManager)
-    {
-        
-    }
 
     private void Start()
     {
