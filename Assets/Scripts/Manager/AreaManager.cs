@@ -68,6 +68,7 @@ public class AreaManager : MonoBehaviour
                 IsEscapeSuccess = false;
                 EscapeTimer = 60f;
                 EscapeText.gameObject.SetActive(true); // 미로 타이머UI 활성
+                Camera.main.orthographicSize = 1.5f;
             }
             if (eventAreas[2].Contains(gameManager.player.transform.position) == true) // 미로 탈출 성공
             {
@@ -84,6 +85,7 @@ public class AreaManager : MonoBehaviour
                     PlayerPrefs.SetFloat("BestTime", BestTime);
                 }
                 PlayerPrefs.SetInt("ClearCount", EscaepSuccessCount); // 클리어 카운트 저장
+                Camera.main.orthographicSize = 6f;
             }
         }
         
@@ -99,6 +101,7 @@ public class AreaManager : MonoBehaviour
                 IsEnterMiro = false; // 미로 밖으로 나왔으니 false
                 EscapeText.gameObject.SetActive(false); // 시간 텍스트 비활성화
                 resultUI.FailUIResult(); // 실패 UI활성
+                Camera.main.orthographicSize = 6f;
             }
             if (EscapeTimer <= 0)
             {
