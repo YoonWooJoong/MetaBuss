@@ -29,7 +29,7 @@ public class AnimationHandler : MonoBehaviour
         NowAnimator.SetBool(IsDie, true);
     }
 
-    public void SwapAnimator(bool isActive)
+    public void SwapAnimator(bool isActive) // 플레이어와 Ride애니메이터를 스왑하기위한 함수
     {
         if (isActive == true)
         {

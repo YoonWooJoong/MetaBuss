@@ -10,6 +10,7 @@ public class PlayerCharacterChange : MonoBehaviour
 
     private void Start()
     {
+        //드롭다운으로 캐릭터 3가지 변경
         animator = GetComponentInChildren<Animator>();
         colorDropDown.options.Clear();
 
@@ -24,7 +25,7 @@ public class PlayerCharacterChange : MonoBehaviour
     }
 
 
-    private void ChangeCharactor(int value)
+    private void ChangeCharactor(int value) // 리소스로드를 통해 리소스에 애니메이터를 넣어서 가져옴
     {
         switch (value)
         {

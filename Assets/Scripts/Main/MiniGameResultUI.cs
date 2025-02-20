@@ -18,7 +18,7 @@ public class MiniGameResultUI : MonoBehaviour
 
     public void GetBestScore(int bestScore)
     {
-        bestScoreText.text = bestScore.ToString();
+        bestScoreText.text = bestScore.ToString(); // 최고 점수 보여줌
     }
 
     private void Start()
@@ -27,7 +27,7 @@ public class MiniGameResultUI : MonoBehaviour
         okButton.onClick.AddListener(OnClickOkButton);
     }
 
-    private void OnClickOkButton()
+    private void OnClickOkButton() //결과창에서 확인누를시 창 비활성화
     {
         this.gameObject.SetActive(false);
         gameManager.ChangeScene = false;

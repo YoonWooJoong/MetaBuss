@@ -11,6 +11,7 @@ public class ReaderBoard : MonoBehaviour
 
     private void Update()
     {
+        // 플레이어 프리펩의 결과를 가져옴
         readerBoardScore.text = PlayerPrefs.GetInt("BestScore").ToString();
         readerBoardTime.text = PlayerPrefs.GetFloat("BestTime").ToString("N2");
         readerBoardCount.text = PlayerPrefs.GetInt("ClearCount").ToString();

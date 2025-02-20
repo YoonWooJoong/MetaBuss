@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
 
     public PlayerController player { get; private set; }
     public MiniGamePlayer miniGamePlayer { get; private set; }
-    private AreaManager areaManager;
     private UIManager uiManager;
     private MiniGameResultUI miniGameResultUI;
 
@@ -78,8 +77,6 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
         currentScene = 0;
         Time.timeScale = 1;
-        Transform chil = transform.GetChild(0); // AreaManager를 활성화 해줌
-        chil.gameObject.SetActive(true);
     }
 
     
@@ -102,7 +99,6 @@ public class GameManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         FindPlayer(); // 씬이 바뀔 때마다 적절한 플레이어를 찾음
-        FindArea(); // 씬이 바뀔때마다 에어리어 매니저를 찾음
         FindUI(); // 씬이 바뀔때마다 ui매니저를 찾음
     }
     private void FindPlayer()
@@ -126,20 +122,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void FindArea()
-    {
-        areaManager = GetComponentInChildren<AreaManager>();
-
-        if (areaManager != null)
-        {
-            areaManager.Init(this);
-        }
-        else
-        {
-            Debug.LogWarning("에어리어매니저가 없음!");
-        }
-
-    }
 
     private void FindUI()
     {
@@ -162,7 +144,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (miniGameResultUI != null)
+        if (miniGameResultUI != null) // 복귀시 미니게임 결과창 표출
         {
             if (ChangeScene == true && currentScene == 0)
             {

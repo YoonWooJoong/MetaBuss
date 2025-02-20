@@ -46,8 +46,8 @@ public class BaseController : MonoBehaviour
         {
             Debug.LogError("BaseController의 characterRenderer가 null입니다.");
         }
-
-        if (_rigidbody.velocity.x > 0)
+        // filpx사용시 라이드는 방향바뀌지 않는 결과 오일러 회전을 통한 변경
+        if (_rigidbody.velocity.x > 0)                                        
             transform.GetChild(0).rotation = Quaternion.Euler(0, 0, 0);
         else if (_rigidbody.velocity.x < 0)
             transform.GetChild(0).rotation = Quaternion.Euler(0, 180, 0);

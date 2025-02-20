@@ -22,12 +22,12 @@ public class MiroResultUI : MonoBehaviour
     {
         failUI.SetActive(true);
     }
-    private void OnSuccessButton()
+    private void OnSuccessButton() // 성공확인버튼 누를시 ui비활성화
     {
          successUI.gameObject.SetActive(false);
     }
 
-    private void OnFailButton()
+    private void OnFailButton() // 실패 확인 버튼 누를시 ui 비활성화
     {
         failUI.gameObject.SetActive(false);
     }
@@ -39,7 +39,7 @@ public class MiroResultUI : MonoBehaviour
 
     private void Start()
     {
-        successUIButton.onClick.AddListener(OnSuccessButton);
+        successUIButton.onClick.AddListener(OnSuccessButton); // 버튼 할당
         failUIButton.onClick.AddListener(OnFailButton);
     }
     

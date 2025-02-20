@@ -25,7 +25,7 @@ public class PlayerColorChange : MonoBehaviour
         colorDropDown.onValueChanged.AddListener(ChangeColor);
     }
 
-    private void ChangeColor(int value)
+    private void ChangeColor(int value) // 드롭다운으로 만든 색상 변경
     {
         switch (value)
         {

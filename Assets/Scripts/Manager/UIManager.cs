@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
         gameUI.Init(this);
         gameOverUI = GetComponentInChildren<GameOverUI>(true);
         gameOverUI.Init(this);
-        if (gameManager.isFirstLoading == true)
+        if (gameManager.isFirstLoading == true) // 리스타트시 home으로 돌아가는 문제 발생해서 수정함
         {
             ChangeState(UIState.Home);
         }
